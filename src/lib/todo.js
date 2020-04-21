@@ -63,11 +63,11 @@ function writeToDo(text) {
   delBtn.addEventListener('click', deleteToDo)
   comBtn.addEventListener('click',completeToDo)
 
-  const span = document.createElement('span')
+  const div = document.createElement('div')
   const newId = toDos.length + 1
-  span.textContent = text
+  div.textContent = text
   li.appendChild(comBtn)
-  li.appendChild(span)
+  li.appendChild(div)
   li.appendChild(delBtn)
   li.id = newId
   toDoList.appendChild(li)
@@ -93,11 +93,11 @@ function writeCompleted(text) {
   delBtn.appendChild(delIcon)
   delBtn.addEventListener('click', deleteCompleted)
 
-  const span = document.createElement('span')
+  const div = document.createElement('div')
   const newId = comples.length + 1
-  span.textContent = text
+  div.textContent = text
   li.appendChild(comBtn)
-  li.appendChild(span)
+  li.appendChild(div)
   li.appendChild(delBtn)
   li.id = newId
   completedList.appendChild(li)
@@ -110,7 +110,7 @@ function writeCompleted(text) {
 }
 
 function addToCompleted(li) {
-  writeCompleted(li.querySelector('span').textContent)
+  writeCompleted(li.querySelector('div').textContent)
 }
 
 function sendToWriteToDo(content) {

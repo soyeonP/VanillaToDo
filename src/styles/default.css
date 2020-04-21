@@ -1,49 +1,100 @@
-header {
- border: 5px solid #FFCCE6;
- background-color: #FFCCE6;
- padding: 5px 0px 0px 10px;
- color: #FFFFFF;
-}
-
-header h1 {
-  color: #33002A;
-}
 
 body {
-  background-color: #f9f9fa
+  background-color: #006A80;
+  font-family:  "Nanum Gothic",'맑은 고딕', "Times New Roman", serif;
+  
 }
 
-body .todo, .done {
-  color: rebeccapurple;
+.js-date {
+  padding: 90px 10px 10px 10px;
+  text-align: center;
+  margin-top: 0px;
+  
 }
+.date{
+  color : #E3FDFF;
+  font-size:30px;
+  font-weight: bold;
+}
+
+.day{
+  color : #F3FDFF;
+  font-size:45px;
+  font-weight: bold;
+}
+
+
+
+body .todo, .done {
+  color: #00414F;
+}
+
+.listBox{
+  width: 100%;
+  position: absolute;
+  left:24%;
+  display: inline-block;
+}
+
 .todo,
 .done {
-  background: #fff;
-  width: 30%;
+  background: #FDFDFF;
   padding : 10px 10px 30px 30px;
+  width:20%;
   float: left;
   margin: 30px 30px 40px 20px;
   position: relative;
+  border-radius: 5px 5px 5px 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
+.todo{
+  float:left;
+}
+
+.done{
+  display: inline;
+}
 .add-items {
   margin-bottom: 1.5rem;
   overflow: hidden
   display: flex !important
 }
 
+.bgImage{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  animation: fadeIn .5s linear;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
 ul {
-  margin: 1.5rem 0;
-  padding: 0.6rem 0.2rem;
+  margin: 1rem 0;
+  padding: 0.2rem 0.2rem;
   width: 100%;
 }
 li {
   list-style:none;
+  display: flex;
   padding: 0.6rem 1rem;
   margin : 0.6rem 0;
-  border: 0.1rem solid #d1d1d1;
+  border: 0.1rem solid #BBD1C7;
   width:80%
+}
+
+li div {
+  flex-grow: 99;
 }
 
 .form-control {

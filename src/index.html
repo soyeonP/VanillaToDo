@@ -7,36 +7,40 @@
   <title>Todo</title>
   <link rel="stylesheet" href="styles/default.css" />
   <link rel="stylesheet" href="./fontello-54fb19fc/css/fontello-embedded.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <h1>VanillaToDo List</h1>
-  </header>
+  <!-- <header>
+    <h1>VanillaToDo List <i class="icon-emo-thumbsup"></i></h1>
+  </header> -->
     <div class="js-date">
       
-      <h2>0000-00-00</h2>
-      <h4></h4>
+      <div class ="date">0000-00-00</div>
+      <div class ="day"></div>
     </div>
-  <div class ="todo">
-    <h1>TODO</h1>
-    <form class="js-toDoForm">
-      <input class = "form-control todo-list-input" type="text" placeholder=" What do you need to do? ">
-    </form>
-    
-    <div class ="toDoList">
-      <ul>
-      </ul>
+    <div class ="listBox">
+      <div class ="todo">
+        <h1>할일</h1>
+        <form class="js-toDoForm">
+          <input class = "form-control todo-list-input" type="text" placeholder=" 뭘 해야 할까요? ">
+        </form>
+        
+        <div class ="toDoList">
+          <ul>
+          </ul>
+        </div>
+      </div>
+      
+      <div class ="done">
+        <h1>한일</h1>
+        <div class ="doneList">
+          <ul>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
   
-  <div class ="done">
-    <h1>Completed</h1>
-    <div class ="doneList">
-      <ul>
-      </ul>
-    </div>
-  </div>
 
   <script type="module" src="main.js"></script>
 </body>

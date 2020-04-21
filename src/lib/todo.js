@@ -28,6 +28,17 @@ function deleteToDo(event) {
   console.log(cleanToDos)
 }
 
+function deleteCompleted(event) {
+  const btn = event.target
+  const li = btn.parentNode.parentNode
+  completedList.removeChild(li)
+  const cleanComples = comples.filter(function(comples) {
+    return comples.id !== parseInt(li.id)
+  })
+  comples = cleanComples
+  saveCompleted()
+  console.log(cleanComples)
+}
 
 
 function completeToDo(event) {
@@ -80,7 +91,7 @@ function writeCompleted(text) {
 
   comBtn.appendChild(comIcon)
   delBtn.appendChild(delIcon)
-  delBtn.addEventListener('click', deleteToDo)
+  delBtn.addEventListener('click', deleteCompleted)
 
   const span = document.createElement('span')
   const newId = comples.length + 1
@@ -99,8 +110,7 @@ function writeCompleted(text) {
 }
 
 function addToCompleted(li) {
-  completedList.appendChild(li)
-  writeCompleted(li.text)
+  writeCompleted(li.querySelector('span').textContent)
 }
 
 function sendToWriteToDo(content) {

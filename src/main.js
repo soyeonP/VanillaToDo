@@ -1,11 +1,13 @@
 import hello from './lib/hello.js'
-import date from './lib/date.js'
+import dateInit from './lib/date.js'
+import todoInit from './lib/todo.js'
 
 window.addEventListener(
   'DOMContentLoaded',
   () => {
     hello()
-    date()
+    dateInit()
+    todoInit()
   },
   false
 )

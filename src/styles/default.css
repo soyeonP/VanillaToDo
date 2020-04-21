@@ -1,8 +1,19 @@
+header {
+ border: 5px solid #FFCCE6;
+ background-color: #FFCCE6;
+ padding: 5px 0px 0px 10px;
+ color: #FFFFFF;
+}
+
+header h1 {
+  color: #33002A;
+}
+
 body {
   background-color: #f9f9fa
 }
 
-h1 {
+body .todo, .done {
   color: rebeccapurple;
 }
 .todo,

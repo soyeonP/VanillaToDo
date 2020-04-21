@@ -1,3 +1,4 @@
 export default function hello() {
-  document.querySelector('h1').textContent = 'Hello~~'
+  document.querySelector('.todo h1').textContent = 'TODO'
+  document.querySelector('.done h1').textContent = 'Completed'
 }

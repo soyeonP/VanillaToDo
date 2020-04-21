@@ -1,36 +1,64 @@
 const toDoForm = document.querySelector('.js-toDoForm')
 const toDoList = document.querySelector('.toDoList ul')
 const toDoInput = toDoForm.querySelector('input')
+const completedList = document.querySelector('.doneList ul')
 
 const TODOS_LS = 'toDos'
-const toDos = []
-
+const COMPLETED_LS = 'comples'
+let toDos = []
+let comples = []
 
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos))
 }
+function saveCompleted() {
+  console.log(comples)
+  localStorage.setItem(COMPLETED_LS, JSON.stringify(comples))
+}
 
 function deleteToDo(event) {
   const btn = event.target
-  const li = btn.parentNode
+  const li = btn.parentNode.parentNode
   toDoList.removeChild(li)
-//   const cleanToDos = toDos.filter(filterFn(toDo) {
-//     return toDo.id !== parseInt(li.id)
-//   });
+  const cleanToDos = toDos.filter(function(toDo) {
+    return toDo.id !== parseInt(li.id)
+  })
+  toDos = cleanToDos
+  saveToDos()
+  console.log(cleanToDos)
+}
+
+
+
+function completeToDo(event) {
+  const btn = event.target
+  const li = btn.parentNode.parentNode
+  toDoList.removeChild(li)
+  btn.className = "icon-check"
+  addToCompleted(li)
 }
 
 function writeToDo(text) {
   const li = document.createElement('li')
-  const delBtn = document.createElement('button')
-  delBtn.textContent = '❌'
+  const comBtn = document.createElement('a')
+  const delBtn = document.createElement('a')
+  const comIcon = document.createElement('i')
+  const delIcon = document.createElement('i')
+  delIcon.className = "icon-cancel"
+  comIcon.className = "icon-check-empty"
+
+  comBtn.appendChild(comIcon)
+  delBtn.appendChild(delIcon)
   delBtn.addEventListener('click', deleteToDo)
+  comBtn.addEventListener('click',completeToDo)
+
   const span = document.createElement('span')
   const newId = toDos.length + 1
   span.textContent = text
+  li.appendChild(comBtn)
   li.appendChild(span)
   li.appendChild(delBtn)
   li.id = newId
-  toDoList.appendChild(li)
   toDoList.appendChild(li)
   const toDoObj = {
     text: text,
@@ -40,15 +68,59 @@ function writeToDo(text) {
   saveToDos()
 }
 
-function sendToWrite(toDo) {
-  writeToDo(toDo.text)
+function writeCompleted(text) {
+  console.log(text)
+  const li = document.createElement('li')
+  const comBtn = document.createElement('a')
+  const delBtn = document.createElement('a')
+  const comIcon = document.createElement('i')
+  const delIcon = document.createElement('i')
+  delIcon.className = "icon-cancel"
+  comIcon.className = "icon-check"
+
+  comBtn.appendChild(comIcon)
+  delBtn.appendChild(delIcon)
+  delBtn.addEventListener('click', deleteToDo)
+
+  const span = document.createElement('span')
+  const newId = comples.length + 1
+  span.textContent = text
+  li.appendChild(comBtn)
+  li.appendChild(span)
+  li.appendChild(delBtn)
+  li.id = newId
+  completedList.appendChild(li)
+  const compleObj = {
+    text: text,
+    id: newId
+  }
+  comples.push(compleObj)
+  saveCompleted()
+}
+
+function addToCompleted(li) {
+  completedList.appendChild(li)
+  writeCompleted(li.text)
+}
+
+function sendToWriteToDo(content) {
+  writeToDo(content.text)
+}
+
+function sendToWriteComple(content) {
+  writeCompleted(content.text)
 }
 
 function loadToDos() {
   const loadedToDos = localStorage.getItem(TODOS_LS)
-  if (toDos !== null) {
+  const loadedComples = localStorage.getItem(COMPLETED_LS)
+  if (loadedToDos !== null) {
     const parsedToDos = JSON.parse(loadedToDos)
-    parsedToDos.forEach(sendToWrite)
+    parsedToDos.forEach(sendToWriteToDo)
+  }
+  if (loadedComples !== null){
+    const parsedComples = JSON.parse(loadedComples)
+    parsedComples.forEach(sendToWriteComple)
   }
 }
 
